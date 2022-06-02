@@ -29,9 +29,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         | Left              | Down | Right              |
      */
     [0] = LAYOUT(
-        KC_MUTE, KC_HOME, KC_MPLY,
-        MO(1)  , KC_UP  , RGB_MOD,
-        KC_LEFT, KC_DOWN, KC_RGHT
+        LSFT(LALT(KC_M)), LGUI(KC_2), LGUI(KC_0),
+        LGUI(KC_F), LGUI(KC_S), LGUI(LALT(KC_S)),
+        KC_DOWN, KC_UP, MO(1)
     ),
     /*
         | QK_BOOT          | N/A  | Media Stop |
@@ -48,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == _LEFT) {
         if (clockwise) {
-            tap_code(KC_DOWN);
+            tap_code(KC_RIGHT);
         } else {
-            tap_code(KC_UP);
+            tap_code(KC_LEFT);
         }
     }
     else if (index == _MIDDLE) {
