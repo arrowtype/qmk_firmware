@@ -29,9 +29,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         | Left              | Down | Right              |
      */
     [0] = LAYOUT(
-        LSFT(LALT(KC_M)), LGUI(KC_2), LGUI(KC_0),
-        LGUI(KC_F), LGUI(KC_S), LGUI(LALT(KC_S)),
-        KC_DOWN, KC_UP, MO(1)
+        LSFT(LGUI(KC_M)), LGUI(KC_2), LGUI(KC_0),
+        KC_UP, LGUI(KC_S), LGUI(LALT(KC_S)),
+        KC_DOWN, LGUI(KC_F), MO(1)
     ),
     /*
         | QK_BOOT          | N/A  | Media Stop |
@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT(
         QK_BOOT  , BL_STEP, KC_STOP,
-        _______, KC_HOME, RGB_MOD,
-        KC_MPRV, KC_END , KC_MNXT
+        KC_MNXT, KC_HOME, RGB_MOD,
+        KC_MPRV, KC_END , _______
     ),
 };
 
