@@ -21,16 +21,35 @@ enum encoder_names {
   _MIDDLE,
 };
 
+enum custom_keycodes {
+    MULTIMACRO = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case MULTIMACRO:
+        if (record->event.pressed) {
+            // when keycode MULTIMACRO is pressed
+            SEND_STRING(SS_DOWN(X_LSFT)SS_DOWN(X_LGUI)"m"SS_UP(X_LSFT)SS_UP(X_LGUI));
+            SEND_STRING(SS_DOWN(X_LGUI)SS_DOWN(X_LALT)"S"SS_UP(X_LGUI)SS_UP(X_LALT));
+            SEND_STRING(SS_DOWN(X_LGUI)SS_DOWN(X_LCTL)"m"SS_UP(X_LGUI)SS_UP(X_LCTL));
+        } else {
+            // when keycode MULTIMACRO is released
+        }
+        break;
+    }
+    return true;
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
-        | Knob 1: Vol Dn/Up |      | Knob 2: Page Dn/Up |
-        | Press: Mute       | Home | Press: Play/Pause  |
-        | Hold: Layer 2     | Up   | RGB Mode           |
-        | Left              | Down | Right              |
+        | Run MULTIMACRO key | Cmd + 2 | Cmd + 0             |
+        | Up                 | Cmd + s | Cmd + Opt + Ctl + 0 |
+        | Down               | Cmd + f | Hold: Layer 2       |
      */
     [0] = LAYOUT(
-        LSFT(LGUI(KC_M)), LGUI(KC_2), LGUI(KC_0),
-        KC_UP, LGUI(KC_S), LGUI(LALT(KC_S)),
+        MULTIMACRO,LGUI(KC_2), LGUI(KC_0),
+        KC_UP, LGUI(KC_S), LGUI(LALT(LCTL(KC_0))),
         KC_DOWN, LGUI(KC_F), MO(1)
     ),
     /*
