@@ -30,9 +30,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MULTIMACRO:
         if (record->event.pressed) {
             // when keycode MULTIMACRO is pressed
-            SEND_STRING(SS_DOWN(X_LSFT)SS_DOWN(X_LGUI)"m"SS_UP(X_LSFT)SS_UP(X_LGUI));
-            SEND_STRING(SS_DOWN(X_LGUI)SS_DOWN(X_LALT)"S"SS_UP(X_LGUI)SS_UP(X_LALT));
-            SEND_STRING(SS_DOWN(X_LGUI)SS_DOWN(X_LCTL)"m"SS_UP(X_LGUI)SS_UP(X_LCTL));
+            tap_code16(LSFT(LGUI(KC_M)));
+            tap_code16(LGUI(LALT(KC_S)));
+            tap_code16(LGUI(LCTL(KC_M)));
         } else {
             // when keycode MULTIMACRO is released
         }
@@ -52,13 +52,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_UP, LGUI(KC_S), LGUI(LALT(LCTL(KC_0))),
         KC_DOWN, LGUI(KC_F), MO(1)
     ),
+    /* So far, the only thing I really use in layer 2 is the "QMK Boot" function, for flashing the board */ 
+    /* I plan to explore further,  though! */
     /*
-        | QK_BOOT          | N/A  | Media Stop |
-        | Held: Layer 2  | Home | RGB Mode   |
-        | Media Previous | End  | Media Next |
+        | QMK BOOT       | Backlight Step  | Media Stop    |
+        | Media Next     | Home            | RGB Mode      |
+        | Media Previous | End             | Held: Layer 2 |
      */
     [1] = LAYOUT(
-        QK_BOOT  , BL_STEP, KC_STOP,
+        QK_BOOT, BL_STEP, KC_STOP,
         KC_MNXT, KC_HOME, RGB_MOD,
         KC_MPRV, KC_END , _______
     ),
