@@ -12,8 +12,8 @@
 #define VENDOR_ID       0x4B44
 #define PRODUCT_ID      0x4157
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    Kiser Designs
-#define PRODUCT         Alpha Willy
+#define MANUFACTURER    "Kiser Designs"
+#define PRODUCT         "Alpha Willy"
 
 /* key matrix size */
 #define MATRIX_ROWS 4
