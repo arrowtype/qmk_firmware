@@ -1,0 +1,21 @@
+{
+    "manufacturer": "Kiser Designs",
+    "keyboard_name": "Alpha Willy",
+    "bootloader": "rp2040",
+    "bootmagic": {
+        "enabled": true
+    },
+    "diode_direction": "COL2ROW",
+    "encoder": {
+        "enabled": false
+    },
+    "mouse_key": {
+        "enabled": true
+    },
+    "processor": "RP2040",
+    "usb": {
+        "device_version": "0.0.1",
+        "pid": "0x4157",
+        "vid": "0x4B44"
+    }
+}
